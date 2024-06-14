@@ -66,10 +66,9 @@ powder_response = requests.get(
 )
 
 desert_response = requests.get(
-    'https://skidkaonline.ru/apiv3/products/?limit=429&offset=0&pcategories_ids=2754&city_id=627&fields=id,name,shops_ids,imagefull,daystitle',
+    'https://skidkaonline.ru/apiv3/products/?limit=429&offset=0&pcategories_ids=429&city_id=627&fields=id,name,shops_ids,imagefull,daystitle',
     cookies=cookies,
 )
-
 
 alcohol_info = Items.parse_obj(alcohol_response.json())
 product_info = Items.parse_obj(products_response.json())
@@ -81,7 +80,7 @@ feed_info = Items.parse_obj(feed_response.json())
 powder_info = Items.parse_obj(powder_response.json())
 desert_info = Items.parse_obj(desert_response.json())
 
-print(alcohol_info.json())
+print("parsed ok")
 
 adddata = requests.post('http://localhost:6969/addalc', json=alcohol_info.json())
 adddata = requests.post('http://localhost:6969/addprod', json=powder_info.json())
@@ -92,4 +91,4 @@ adddata = requests.post('http://localhost:6969/addcof', json=coffe_info.json())
 adddata = requests.post('http://localhost:6969/addfeed', json=feed_info.json())
 adddata = requests.post('http://localhost:6969/addpowder', json=powder_info.json())
 adddata = requests.post('http://localhost:6969/adddes', json=desert_info.json())
-print(adddata)
+print("data send")
