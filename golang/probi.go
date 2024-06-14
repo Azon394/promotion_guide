@@ -108,6 +108,7 @@ func main() {
 
 func reghandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("register handler started")
+
 	token := r.URL.Query().Get("token")
 	data := decodeValid(token)
 	var client Client
