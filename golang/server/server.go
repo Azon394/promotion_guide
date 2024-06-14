@@ -101,15 +101,6 @@ func is_in_data(login string) bool { // Проверка существует п
 	return true
 }
 
-func to_boolean(s string) bool {
-	if s == "true" {
-		return true
-	} else if s == "false" {
-		return false
-	}
-	return false
-}
-
 func getData(col string) primitive.D { //
 	client, err := mongo.NewClient(options.Client().ApplyURI(MONGO)) // создаём дэфолтного клиента
 	if err != nil {                                                  // проверяем ошибку если она есть
@@ -182,6 +173,7 @@ func json_to_bson(jsonStr string) bson.M {
 }
 
 func main() {
+	log.Println("Starting server")
 	http.HandleFunc("/reg", reghandler)
 	http.HandleFunc("/auth", authhandle)
 	http.HandleFunc("/getstr", getstrhandler)
@@ -195,7 +187,7 @@ func main() {
 	http.HandleFunc("/addfeed", addfeedhandler)
 	http.HandleFunc("/addpowder", addpowderhandler)
 	http.HandleFunc("/adddes", adddeshandler)
-	http.ListenAndServe(":6969", nil)
+	http.ListenAndServe(":8000", nil)
 }
 
 func getstrhandler(w http.ResponseWriter, r *http.Request) {
