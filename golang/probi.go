@@ -156,5 +156,3 @@ func decodeValid(tokenString string) jwt.MapClaims {
 	}
 	return claims
 }
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIn0.qupq7x2Xp32sZbOk9wH49EefoYyiuyYEd8sG1rs_lfA
