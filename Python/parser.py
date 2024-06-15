@@ -2,6 +2,8 @@ import requests
 import json
 from models import *
 
+port = "6969"
+
 cookies = {
     '_gid': 'GA1.2.2135665031.1716296453',
     '_ym_uid': '1716296453816682016',
@@ -82,13 +84,13 @@ desert_info = Items.parse_obj(desert_response.json())
 
 print("parsed ok")
 
-adddata = requests.post('http://localhost:8000/addalc', json=alcohol_info.json())
-adddata = requests.post('http://localhost:8000/addprod', json=powder_info.json())
-adddata = requests.post('http://localhost:8000/addcandy', json=candy_info.json())
-adddata = requests.post('http://localhost:8000/addbit', json=bitovuha_info.json())
-adddata = requests.post('http://localhost:8000/addmeat', json=meat_info.json())
-adddata = requests.post('http://localhost:8000/addcof', json=coffe_info.json())
-adddata = requests.post('http://localhost:8000/addfeed', json=feed_info.json())
-adddata = requests.post('http://localhost:8000/addpowder', json=powder_info.json())
-adddata = requests.post('http://localhost:8000/adddes', json=desert_info.json())
+adddata = requests.post('http://localhost:' + port + '/addalc', json=alcohol_info.json())
+adddata = requests.post('http://localhost:' + port + '/addprod', json=powder_info.json())
+adddata = requests.post('http://localhost:' + port + '/addcandy', json=candy_info.json())
+adddata = requests.post('http://localhost:' + port + '/addbit', json=bitovuha_info.json())
+adddata = requests.post('http://localhost:' + port + '/addmeat', json=meat_info.json())
+adddata = requests.post('http://localhost:' + port + '/addcof', json=coffe_info.json())
+adddata = requests.post('http://localhost:' + port + '/addfeed', json=feed_info.json())
+adddata = requests.post('http://localhost:' + port + '/addpowder', json=powder_info.json())
+adddata = requests.post('http://localhost:' + port + '/adddes', json=desert_info.json())
 print("data send!!!")
