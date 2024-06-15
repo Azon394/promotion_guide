@@ -1,4 +1,4 @@
-package main
+/*package main
 
 import (
 	"context"
@@ -156,3 +156,4 @@ func decodeValid(tokenString string) jwt.MapClaims {
 	}
 	return claims
 }
+*/

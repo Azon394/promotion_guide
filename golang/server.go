@@ -189,7 +189,7 @@ func main() {
 	http.HandleFunc("/addfeed", addfeedhandler)
 	http.HandleFunc("/addpowder", addpowderhandler)
 	http.HandleFunc("/adddes", adddeshandler)
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(PORT, nil)
 }
 
 func getstrhandler(w http.ResponseWriter, r *http.Request) {
