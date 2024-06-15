@@ -22,6 +22,7 @@ type Client struct { // Структура данных пользователя
 const (
 	JWTCODE = "123456789"
 	MONGO   = "mongodb://127.0.0.1:27017"
+	PORT    = ":6969"
 )
 
 func TrimFirstAndLast(s string) string {
@@ -174,6 +175,7 @@ func json_to_bson(jsonStr string) bson.M {
 
 func main() {
 	log.Println("Starting server")
+	log.Println("port is ", PORT)
 	http.HandleFunc("/reg", reghandler)
 	http.HandleFunc("/auth", authhandle)
 	http.HandleFunc("/getstr", getstrhandler)
