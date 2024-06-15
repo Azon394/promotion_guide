@@ -204,7 +204,7 @@ func gethandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("get handler started")
 	col := r.URL.Query().Get("type")
 	log.Println(col)
-	url := "http://localhost:8000/getstr?type=" + col
+	url := "http://localhost" + PORT + "/getstr?type=" + col
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Fatalln(err)
