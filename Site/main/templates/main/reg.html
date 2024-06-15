@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>АкциоГид</title>
+        <link rel="stylesheet" href="../../static/main/css/reg.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="reg-content">
+            <img src="../../static/main/img/logo.svg" alt="logo" class="reg-content_logo">
+            <p class="reg-content_title">АкциоГид</p>
+            <form method="post" class="reg-content_registration-form" action="registration">
+                {% csrf_token %}
+                <div class="reg-content_registration-form_inputs">
+                    <input type="text" class="reg-content_registration-form_input" placeholder="Логин" name="login">
+                    <input type="password" class="reg-content_registration-form_input" placeholder="Пароль" name="password">
+                </div>
+                <p class="reg-content_error">{{ text }}</p>
+                <button class="reg-content_btn-registration" type="submit" name="registration">Зарегистрироваться</button>
+                <a href="/auth" style="text-decoration: none;">
+                    <button class="reg-content_btn-auth" name="auth">Войти</button>
+                </a>
+            </form>
+        </div>
+        <script src="../../static/main/js/reg.js"></script>
+    </body>
+</html>

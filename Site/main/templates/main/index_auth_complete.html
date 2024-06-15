@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>АкциоГид</title>
+        <link rel="stylesheet" href="../../static/main/css/index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main-content">
+            <header class="header">
+                <img src="../../static/main/img/logo.svg" alt="" class="header_logo">
+                <div class="header_content">
+                    <div class="header_links">
+                        <p>Каталог</p>
+                    </div>
+                    <div class="header_btns">
+                        <a href="/account" style="text-decoration: none;">
+                            <div class="header_content_account">Личный кабинет</div>
+                        </a>
+                        <div class="header_sep"></div>
+                        <a href="" style="text-decoration: none;">
+                            <div class="header_btns_exit-account">Выйты с аккаунта</div>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="main-content_news">
+                <p class="main-content_news_title">АкциоГид</p>
+                <p class="main-content_news_description">АкциоГид - сайт, который собирает акции на товары в различных магазинах. 
+                    Мы помогаем экономить и получать свежую информацию о ценах</p>
+            </div>
+            <div class="main-content_catalog">
+                <div class="main-content_catalog_filters">
+                    <p>Фильтры</p>
+                </div>
+                <div class="main-content_catalog-cards">
+                    <div class="main-content_catalog-cards_row">
+                        <div class="main-content_catalog-cards_row_card"> <p>{{ text }}</p></div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                    </div>
+                    <div class="main-content_catalog-cards_row">
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                        <div class="main-content_catalog-cards_row_card">{{ text }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content_btn-continuation"></div>
+        </div>
+        <div class="overlay">
+            <div class="popup">
+                <div class="popup_img">
+                    <img src="" alt="">
+                </div>
+                <div class="popup_info">
+                    <p class="popup_info_title">{{ title }}</p>
+                    <p class="popup_info_datetime">{{ datetime }}</p>
+                    <p class="popup_info_shop">{{ shop }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: httpresponses
+Version: 1.0.0
+Summary: A really simple module to help you with HTTP responses
+Home-page: https://github.com/fasm-ga/httpresponses
+Author: Fasm.ga
+Author-email: developers@fasmga.org
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/fasm-ga/httpresponses/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# fasm-ga/httpresponses: A really simple module to help you with HTTP responses
+
+### Brief
+httpresponses is a simple module that helps you with HTTP responses.
+
+
