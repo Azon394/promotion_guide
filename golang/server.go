@@ -25,6 +25,52 @@ const (
 	PORT    = ":6969"
 )
 
+type prods struct {
+	Name      string      `json:"name"`
+	Daystitle string      `json:"daystitle"`
+	Shops_ids []string    `json:"shops_Ids"`
+	Imagefull interface{} `json:"imagefull"`
+}
+
+type prodlist struct {
+	Products []prods `json:"products"`
+}
+
+func shops(i []string) []string {
+	str := i[0]
+
+	if str == "1773" {
+		return []string{"Ашан"}
+	} else if str == "1624" {
+		return []string{"Метро"}
+	} else if str == "2024" {
+		return []string{"Корзина"}
+	} else if str == "1720" {
+		return []string{"МагазинЧИК"}
+	} else if str == "1150" {
+		return []string{"ПУД"}
+	} else if str == "2446" {
+		return []string{"Ценник"}
+	} else if str == "2151" {
+		return []string{"Доброцен"}
+	} else if str == "2529" {
+		return []string{"ФРЕШ маркет"}
+	} else if str == "1896" {
+		return []string{"Мега Яблоко"}
+	} else if str == "2248" {
+		return []string{"Яблоко"}
+	} else if str == "2138" {
+		return []string{"Продторгъ"}
+	} else if str == "2531" {
+		return []string{"Народный Амбар"}
+	} else if str == "1108" {
+		return []string{"Чистый Дом"}
+	} else if str == "1132" {
+		return []string{"OrangeEVA"}
+	}
+	return []string{""}
+}
+
 func TrimFirstAndLast(s string) string {
 	if len(s) > 44 {
 		s = s[43 : len(s)-1]
@@ -229,20 +275,21 @@ func adddeshandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
 		}
-
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+		}
 		jsonStr, err := json.Marshal(obj)
 		if err != nil {
 			log.Println(err)
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "desert")
 	} else {
 		log.Println(err)
@@ -256,11 +303,14 @@ func addpowderhandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -269,7 +319,6 @@ func addpowderhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "powder")
 	} else {
 		log.Println(err)
@@ -283,11 +332,14 @@ func addfeedhandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -296,7 +348,6 @@ func addfeedhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "feed")
 	} else {
 		log.Println(err)
@@ -310,11 +361,14 @@ func addcofhandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -323,7 +377,6 @@ func addcofhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "coffee")
 	} else {
 		log.Println(err)
@@ -337,11 +390,14 @@ func addmeathandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -350,7 +406,6 @@ func addmeathandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "meat")
 	} else {
 		log.Println(err)
@@ -364,11 +419,14 @@ func addbithandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -377,7 +435,6 @@ func addbithandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "bitovuha")
 	} else {
 		log.Println(err)
@@ -391,11 +448,14 @@ func addcandyhandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -404,7 +464,6 @@ func addcandyhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "candy")
 	} else {
 		log.Println(err)
@@ -418,11 +477,14 @@ func addprodhandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -431,7 +493,6 @@ func addprodhandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "product")
 	} else {
 		log.Println(err)
@@ -445,11 +506,14 @@ func addalchandler(w http.ResponseWriter, r *http.Request) {
 	var data string
 	err = json.Unmarshal(body, &data)
 	if err == nil {
-		var obj map[string]interface{}
+		var obj prodlist
 		err := json.Unmarshal([]byte(data), &obj)
 		if err != nil {
 			log.Println(err)
 			return
+		}
+		for k, _ := range obj.Products {
+			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -458,7 +522,6 @@ func addalchandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bsonData := json_to_bson(string(jsonStr))
-		//log.Println("\n", bsonData)
 		udateAlc(bsonData, "alc")
 	} else {
 		log.Println(err)
