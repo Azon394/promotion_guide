@@ -30,6 +30,7 @@ type prods struct {
 	Daystitle string      `json:"daystitle"`
 	Shops_ids []string    `json:"shops_Ids"`
 	Imagefull interface{} `json:"imagefull"`
+	Type      string      `json:"type"`
 }
 
 type prodlist struct {
@@ -283,6 +284,7 @@ func adddeshandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Молочные продукты"
 		}
 		jsonStr, err := json.Marshal(obj)
 		if err != nil {
@@ -311,6 +313,7 @@ func addpowderhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Порошки и стирка"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -340,6 +343,7 @@ func addfeedhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Корма"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -369,6 +373,7 @@ func addcofhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Кофе"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -398,6 +403,7 @@ func addmeathandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Мясная продукция"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -427,6 +433,7 @@ func addbithandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Бытовые товары"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -456,6 +463,7 @@ func addcandyhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Сладости"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -485,6 +493,7 @@ func addprodhandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Продукты для стирки"
 		}
 
 		jsonStr, err := json.Marshal(obj)
@@ -514,6 +523,7 @@ func addalchandler(w http.ResponseWriter, r *http.Request) {
 		}
 		for k, _ := range obj.Products {
 			obj.Products[k].Shops_ids = shops(obj.Products[k].Shops_ids)
+			obj.Products[k].Type = "Алкоголь"
 		}
 
 		jsonStr, err := json.Marshal(obj)
